@@ -1,0 +1,87 @@
+<%- include('partials/header') %>
+    <%- include('partials/navbar') %>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+        <style>
+            body {
+                background-color: #7B88EE;
+            }
+
+            .form-control {
+                height: 46px;
+                border: 1px solid #A7B8B3;
+                border-radius: 10px;
+                font-size: 1.4rem;
+
+            }
+
+            .options {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+            }
+
+            .option-adm {
+                height: 38px;
+            }
+
+            .atualizar {
+                width: 108;
+                background-color: #fff;
+                color: #000;
+            }
+
+            .atualizar:hover {
+                background-color: #6E6FE5;
+                color: #fff;
+            }
+
+            .voltar {
+                padding: 6px 30px;
+            }
+
+            .voltar:hover {
+                background-color: #e2e2e2;
+            }
+        </style>
+
+        <body>
+            <hr>
+            <div class="container">
+                <div class="card bg-dark text-white">
+                    <div class="card-header">
+                        <h3>Editar Usuário</h3>
+                        <div style="width: 100%; border: 1px solid #fff;"></div>
+                    </div>
+                    <div class="card-body">
+                        <form action="/update" method="post">
+                            <input class="form-control" type="hidden" name="id" value="<%= user.id %>"><br>
+                            <input class="form-control" type="text" name="nome" id="nome" placeholder="nome" value="<%= user.nome %>"><br>
+                            <input class="form-control" type="email" name="email" id="email" placeholder="email" value="<%= user.email %>"><br>
+                            <input class="form-control" type="text" name="endereco" id="endereco" placeholder="endereco" value="<%= user.endereco %>"><br>
+                            <input class="form-control" type="text" name="cidade" id="cidade" placeholder="cidade" value="<%= user.cidade %>"><br>
+                            <input class="form-control" type="text" name="estado" id="estado" placeholder="estado" value="<%= user.estado %>"><br>
+                            <input class="form-control" type="" readonly placeholder="superuser" value="<%= user.superuser %>"><br>
+                            <div class="options">
+                                <select name="superuser" id="superuser" name="superuser" class="option-adm">
+                                    <option disabled selected>Tornar ADM</option>
+                                    <option value="true">Sim</option>
+                                    <option value="false">Não</option>
+                                </select>
+                                <button class="btn atualizar">Atualizar</button>
+                            </div>
+                            <hr>
+                        </form>
+                        <div style="float: inline-end;">
+                            <a href="/usuarios" class="btn btn-light btn-sm voltar">Voltar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </body>
+
+        </html>

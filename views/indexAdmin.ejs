@@ -1,0 +1,194 @@
+<%- include('partials/header') %>
+
+    <style>
+        body {
+            background-color: #7B88EE;
+
+            color: #fff;
+        }
+
+        .container {
+            max-width: 660px;
+            margin: 30px auto;
+        }
+
+        .container h1 {
+            margin-left: 90px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+            padding: 15px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #sugestoes {
+            height: 100px;
+            width: 636px;
+            border-radius: 10px;
+
+
+        }
+
+        h4:hover {
+            color: #6E6FE5;
+        }
+
+        .flex-sugestao {
+            display: flex;
+            justify-content: center;
+        }
+
+        .logout a {
+            font-family: 600px;
+            color: aliceblue;
+            padding: 6px 40px;
+            border-radius: 6px;
+        }
+
+        .deletar {
+            width: 108px;
+            height: 40px;
+            background-color: #6E6FE5;
+            font-weight: bold;
+            margin: 10px;
+            border: 2px;
+            color: aliceblue;
+
+        }
+
+        .voltar {
+            width: 108px;
+            height: 40px;
+            border: 2px;
+            background-color: #202020;
+            margin: 10px;
+
+        }
+
+        .voltar:hover {
+            background-color: #000;
+        }
+
+        #nav {
+            font-size: 25px;
+            color: aliceblue;
+        }
+    </style>
+
+
+    <nav style="background-color: #6E6FE5;" class="navbar navbar-expand-lg ">
+        <a href="/admin">
+            <img src="../../img/logonov.svg" style="width: 155px; height: 120px; margin-left: 5px;" alt="">
+            <label id="nav"><b>Minha mente saudável V 4.3.1</b></label>
+        </a>
+        <div class="logout">
+            <a style="margin-left: 900px;" class="nav-link btn btn-dark btn-sm text-white" href="/logout" tabindex="-1" aria-disabled="false">Sair</a>
+        </div>
+
+    </nav>
+
+    <body>
+
+        <div class="container">
+
+            <h1>Gerenciamento de Usuários</h1>
+            <hr>
+
+            <div class="card">
+                <a href="/usuarios">
+                    <h4>Listar Usuários</h4>
+                </a>
+            </div>
+            <div style="padding: 15px;" class="card">
+                <form method="post" action="/finduser">
+                    <label style="color: #000;" for="email">Insira E-mail:</label>
+                    <input class="form-control" type="text" name="email" id="email"><br>
+                    <button class="btn btn-dark" type="submit">Buscar usuário por E-mail</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="flex-sugestao">
+            <button id="sugestoes" data-bs-toggle="modal" data-bs-target="#listSugestoes" tabindex="-1" aria-disabled="false">
+                <h4>Listar Sugestões dos Usuários<h4>
+        </div>
+        <!-- Modal listSugestoes-->
+        <div>
+            <div>
+                <div class="modal fade" id="listSugestoes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <link rel="stylesheet" href="/css/1admin.css">
+                                <h5 class="modal-title" id="exampleModalLabel ">Sugestões dos Usuarios</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="row">
+                                <div class="modal-body">
+
+                                    <% sugestoes.forEach(sugestao=> { %>
+                                        <div class="col-md-16">
+                                            <table class="table table-houver">
+                                                <thead>
+                                                    <tr class="title">
+                                                        <th style="font-size: 30px;" class="col-md-4">
+                                                            id</th>
+
+                                                        <th style="font-size: 30px;" class="col-md-4">
+                                                            Descrição</th>
+                                                        <th style="font-size: 30px;" class="col-md-3">
+                                                            Sugestão
+                                                        <th>
+                                                            <form action="/deleteSugestoes" method="post" style="display: inline;" onsubmit="confirmDel(event, this)">
+                                                                <input type="hidden" name="id" value="<%= sugestao.id %>">
+                                                                <button class="btn btn-sm ml-2 mb-2 deletar"><b>Deletar</b></button>
+                                                            </form>
+                                                    </tr>
+                                                </thead>
+                                                <tr>
+                                                    <td style="font-size: 20px;" class="col-md-2">
+                                                        <%= sugestao.id %>
+                                                    </td>
+
+                                                    <td style="font-size: 20px;" class="col-md-2">
+                                                        <%= sugestao.descricao %>
+                                                    </td>
+                                                    <td style="font-size: 20px;" class="col-md-4">
+                                                        <%= sugestao.sugestoes %>
+                                                    </td>
+                                                    <% }) %>
+                                                        <br><br>
+                                                        <hr>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                </div>
+
+                                <div>
+                                    <button n type="button" data-bs-dismiss="modal" aria-label="Close" type="button" class="btn btn-primary btn-modal voltar"><b>Voltar</b></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal listSugestoes-->
+
+    </body>
+    <script>
+        function confirmDel(event, form) {
+            event.preventDefault()
+            let decision = confirm('Deseja deletar essa Sugestão?')
+            if (decision) {
+                form.submit();
+            }
+        }
+    </script>

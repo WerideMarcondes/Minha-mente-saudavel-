@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<style>
+  #nav {
+    font-size: 25px;
+    color: aliceblue;
+  }
+</style>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="css/cadastro.css"><br>
+
+<nav style="height: 140px;">
+  <a href="/logout">
+    <img src="../../img/logonov.svg" style="width: 150px; height: 120px; margin-left: 5px;" alt="">
+    <label id="nav"><b>Minha mente saudável V. 4.3.1</b></label>
+  </a>
+</nav>
+
+<title>Mente Saudável</title>
+
+<body>
+  <div class="container col-9">
+    <div id="iner" class="card card-header">
+      <h3 style="color: #fff; font-weight: 600;">Para obter uma Nova Senha voçê precisa preencher corretamente seus
+        Dados </h3>
+      <div class="" style="display: flex; justify-content: center;">
+        <i class="bi bi-person fs-1" style="color: #fff;"></i>
+      </div>
+      <div>
+      </div>
+      <div class="card card-body needs-validation">
+        <form method="POST" action="/setsenha" class="row g-3 form-contato">
+          <div class="col-md-4">
+            <label for="inputPassword4" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="inputPassword1" placeholder="senha..." name="senha">
+            <img id="olho" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABDUlEQVQ4jd2SvW3DMBBGbwQVKlyo4BGC4FKFS4+TATKCNxAggkeoSpHSRQbwAB7AA7hQoUKFLH6E2qQQHfgHdpo0yQHX8T3exyPR/ytlQ8kOhgV7FvSx9+xglA3lM3DBgh0LPn/onbJhcQ0bv2SHlgVgQa/suFHVkCg7bm5gzB2OyvjlDFdDcoa19etZMN8Qp7oUDPEM2KFV1ZAQO2zPMBERO7Ra4JQNpRa4K4FDS0R0IdneCbQLb4/zh/c7QdH4NL40tPXrovFpjHQr6PJ6yr5hQV80PiUiIm1OKxZ0LICS8TWvpyyOf2DBQQtcXk8Zi3+JcKfNafVsjZ0WfGgJlZZQxZjdwzX+ykf6u/UF0Fwo5Apfcq8AAAAASUVORK5CYII=" />
+          </div>
+          <div class="col-md-4">
+            <label for="inputPassword4" class="form-label">Confirmar senha</label>
+            <input type="text" value="" name="id" class="form-control" id="id" name="confirmSenha">
+          </div>
+
+          <div class="d-grid gap-2 col-4 mx-auto">
+            <button type="submit" class="btn btn-primary"><b>Atualizar senha</b></button>
+          </div>
+        </form>
+        <div>
+          <a class="btn btn-dark btn-sm text-white col-2" href="/"><b>Voltar</b></a>
+        </div>
+        <br>
+      </div>
+    </div>
+</body>
+<script>
+  $("#olho").mousedown(function () {
+    $("#inputPassword1").attr("type", "text");
+  });
+
+  $("#olho").mouseup(function () {
+    $("#inputPassword1").attr("type", "password");
+  });
+</script>
+<!-- SCRIPTS  -->
+<!-- SCRIPTS  -->
+<script type="text/javascript" src="/js/scriptTrocarSenha.js"></script>
+
+</html>

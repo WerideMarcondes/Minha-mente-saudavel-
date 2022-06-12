@@ -1,0 +1,55 @@
+<%- include('partials/header') %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css">
+
+    <body>
+        <section>
+            <div class="section-login">
+                <div class="img"><img src="../img/Med.svg" alt=""></div>
+                <div class="login">
+                    <div class="area-login">
+                        <div id="iner" class="textos">
+                            <h1>Minha Mente Saudável</h1>
+
+                        </div>
+                        <form method="POST" action="/authenticate">
+                            <div class="lg">
+                                <label for="login" class="text-input">Email</label>
+                                <input name="lemail" id="login" class="form-control" placeholder="Digite seu E-mail" />
+                            </div>
+
+                            <div class="se">
+                                <label for="senha" class="text-input">Senha</label>
+                                <input name="lsenha" type="password" id="senha" class="form-control" placeholder="Digite sua de senha" />
+                            </div>
+                            <div class="box-senha">
+                                <div class="b-senha">
+                                    <input id="Senha" type="checkbox" onclick="openSenha()">Mostrar senha
+                                </div>
+                                <div class="lostPassword">
+                                    <a href="/novasenha" class="lostpassword">Esqueci minha senha</a>
+                                </div>
+                            </div>
+
+                            <div class="buttons">
+                                <div class="btn-logar">
+                                    <button type="submit" class="alogar">Logar</button>
+                                </div>
+                                <div class="cadastrese">
+                                    <a href="/cadastro" class="">Cadastrar</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- mostrar senha -->
+        <script type="text/javascript" src="js/scriptLogin.js"> </script>
+
+
+    </body>
+
+    </html>

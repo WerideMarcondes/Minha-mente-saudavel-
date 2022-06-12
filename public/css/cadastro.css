@@ -1,0 +1,140 @@
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('../img/fundu.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.col-9 {
+  margin-top: 20px;
+}
+
+.img {
+  display: flex;
+  justify-content: center;
+}
+
+/*Modal */
+.modal-dialog {
+  margin-left: 450px;
+  margin-top: 90px;
+}
+
+.radio {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+
+}
+
+.modal-content {
+  width: 790px;
+  height: 500px;
+}
+
+.radio_infor {
+  font-size: 40px;
+  margin-left: 50px;
+  font-weight: bold;
+}
+
+.modal-title {
+  font-size: 40px;
+  text-align: center;
+  width: 600px;
+}
+
+.btnm {
+  height: 50px;
+  width: 100px;
+  font-size: 16px;
+  color: white;
+
+}
+
+.sair {
+  padding: 13px 16px;
+  width: 128px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: #212529;
+  border: 1px solid black;
+}
+
+.sair:hover {
+  background-color: #000;
+  border-color: #000;
+  color: #fff;
+}
+
+#modalchange {
+  margin-left: 400px;
+}
+
+
+.form-control,
+.form-select,
+.btmn-send {
+  height: 46px;
+  border: 1px solid #A7B8B3;
+  border-radius: 10px;
+  font-size: 1.4rem;
+
+}
+
+.btmn-send {
+  background-color: #7B88EE;
+  border-color: #6E6FE5;
+}
+
+.btmn-send:hover {
+  background-color: #6E6FE5;
+}
+
+.check1 {
+  margin-left: 10px;
+}
+
+.btn-cadastro {
+  height: 46px;
+  border-radius: 8px;
+  background-color: #7B88EE;
+  border-color: #6E6FE5;
+  font-weight: 700;
+}
+
+.btn-cadastro:hover {
+  background-color: #6E6FE5;
+}
+
+.btn-voltar {
+  padding: 8px 16px;
+  width: 128px;
+  border-radius: 8px;
+  margin-left: 10px;
+  font-weight: 700;
+}
+
+.modal-dialog {
+  display: flex;
+  justify-content: center;
+  width: 800px;
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+}
+
+.sair {
+  padding: 8px 16px;
+  width: 128px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.btn:hover {
+  color: #fff;
+}

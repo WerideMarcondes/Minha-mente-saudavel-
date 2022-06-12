@@ -1,0 +1,96 @@
+body {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-bottom: 0;
+}
+
+body {
+  background-color: #000;
+}
+
+#mensagem {
+  border-radius: 15px;
+  width: 600px;
+  height: 300px;
+  margin-left: 210px;
+  font-size: 25px;
+  text-align: center;
+}
+
+#iputdescricao {
+  border-radius: 10px;
+  height: 60px;
+  width: 600px;
+  margin-left: 210px;
+  font-size: 30px;
+  text-align: center;
+
+
+}
+
+#info {
+  font-size: 23px;
+  margin-left: 365px;
+}
+
+#labelcontador {
+  margin-top: 10px;
+
+}
+
+section {
+  margin-left: 15px;
+}
+
+.card {
+  background-color: rgb(100, 100, 100, 0.5);
+}
+
+/* style modal */
+.tela-modal {
+  width: 200px;
+  font-size: 30px;
+  font-weight: bold;
+  border-radius: 10px;
+  text-align: center;
+  margin-top: 500px;
+}
+
+.modal-content {
+  width: 1060px;
+}
+
+.modal-title {
+  font-size: 55px;
+  font-weight: bold;
+  margin: auto;
+}
+
+.btn-modal {
+  width: 150px;
+  font-size: 20px;
+  margin-right: 225px;
+}
+
+.voltar {
+  padding: 8px 16px;
+  width: 150px;
+  border-radius: 8px;
+  background-color: #212529;
+  color: #fff;
+}
+
+.voltar:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.enviar {
+  padding: 8px 16px;
+  background-color: #6E6FE5;
+}
+
+.neg {
+  font-weight: 700;
+}

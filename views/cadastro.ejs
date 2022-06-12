@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<style>
+  #nav {
+    font-size: 25px;
+    color: aliceblue;
+  }
+</style>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="css/cadastro.css">
+<br>
+
+<nav style="height: 140px;">
+  <a href="">
+    <img src="../../img/logonov.svg" style="width: 150px; height: 120px; margin-left: 5px;" alt="">
+    <label id="nav"><b>Minha mente saudável V. 4.3.1</b></label>
+  </a>
+</nav>
+
+<title>Mente Saudável</title>
+
+<body>
+  <div class="container col-9">
+    <div id="iner" class="card card-header">
+      <h3 style="color: #fff; font-weight: 600;">Cadastro</h3>
+      <div class="" style="display: flex; justify-content: center;">
+        <i class="bi bi-person fs-1" style="color: #fff;"></i>
+      </div>
+      <div>
+        <button id="modalchange" type="button" class="btn btn-dark btn-lg col-3" data-toggle="modal" data-target="#perfil">
+          Escolher outro perfil
+        </button>
+      </div>
+      <div class="card card-body needs-validation">
+        <form method="POST" action="/cadastro/save" class="row g-3 form-contato">
+          <div class="col-md-6">
+            <label for="inputNome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="inputNome" placeholder="nome completo..." name="nome" autocomplete="off" required>
+          </div>
+          <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="ex: abc@gmail.com" name="email" autocomplete="off" required>
+          </div>
+          <div class="col-md-4">
+            <label for="nascimento" class="form-label">DATA DE NASCIMENTO</label>
+            <input type="text" class="form-control" id="nascimento" name="Nascimento" autocomplete="off" required>
+          </div>
+          <div class="col-md-4">
+            <label for="inputPassword4" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="senha..." name="senha" autocomplete="off" required>
+          </div>
+          <div class="col-md-4">
+            <label for="inputPassword4" class="form-label">Confirmar senha</label>
+            <input type="password" class="form-control" id="inputPasswordConfirm" placeholder="confirmar senha..." name="confirmSenha" required>
+          </div>
+          <div>
+            <input id="Senha" type="checkbox" class="check1" onclick="opensenha()"> Mostrar Senha
+          </div>
+          <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">CNPJ</label>
+            <input type="text" class="form-control" id="cnpj" placeholder="campo voltado para instituições de ensino" name="cnpj">
+          </div>
+          <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Matricula</label>
+            <input type="text" class="form-control" id="matricula" placeholder="campo voltado para instituições de ensino" name="matricula">
+          </div>
+          <div class="col-12">
+            <label for="inputAddress" class="form-label">CEP</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="CEP : XXXXX-XXX" name="endereco">
+          </div>
+
+          <div class="col-md-6">
+            <label for="address" class="form-label">Rua</label>
+            <input type="text" class="form-control" id="address" name="address">
+          </div>
+          <div class="col-md-6">
+            <label for="district" class="form-label">Bairro</label>
+            <input type="text" class="form-control" id="district" name="district">
+          </div>
+          <div class="col-md-6">
+            <label for="inputCity" class="form-label">Cidade</label>
+            <input type="text" class="form-control" id="inputCity" name="cidade">
+          </div>
+          <div class="col-md-6">
+            <label for="inputState" class="form-label">Estado</label>
+            <select name="estado" id="inputState" class="form-select">
+              <option selected>Estado...</option>
+              <option value="AC">Acre</option>
+              <option value="AL">Alagoas</option>
+              <option value="AP">Amapá</option>
+              <option value="AM">Amazonas</option>
+              <option value="BA">Bahia</option>
+              <option value="CE">Ceará</option>
+              <option value="DF">Distrito Federal</option>
+              <option value="ES">Espírito Santo</option>
+              <option value="GO">Goiás</option>
+              <option value="MA">Maranhão</option>
+              <option value="MT">Mato Grosso</option>
+              <option value="MS">Mato Grosso do Sul</option>
+              <option value="MG">Minas Gerais</option>
+              <option value="PA">Pará</option>
+              <option value="PB">Paraíba</option>
+              <option value="PR">Paraná</option>
+              <option value="PE">Pernambuco</option>
+              <option value="PI">Piauí</option>
+              <option value="RJ">Rio de Janeiro</option>
+              <option value="RN">Rio Grande do Norte</option>
+              <option value="RS">Rio Grande do Sul</option>
+              <option value="RO">Rondônia</option>
+              <option value="RR">Roraima</option>
+              <option value="SC">Santa Catarina</option>
+              <option value="SP">São Paulo</option>
+              <option value="SE">Sergipe</option>
+              <option value="TO">Tocantins</option>
+              <option value="EX">Estrangeiro</option>
+            </select>
+          </div>
+
+          <div class="col-md-4">
+            <label for="inputzip1" class="form-label">CPF</label>
+            <input name="cpf" type="text" class="form-control" placeholder="000.000.000-00" id="inputZip1" required>
+          </div>
+
+          <div class="col-md-4">
+            <label hidden id="inputzip3" for="inputzip2" class="form-label">CFP</label>
+            <input hidden name="cfp" type="text" class="form-control" id="inputzip2" placeholder="psicólogo">
+          </div>
+
+          <div class="col-md-4">
+            <label hidden id="label1" for="inputZip" class="form-label">CRM/NOME/ESPECIALIDADE</label>
+            <input hidden name="crm" type="text" class="form-control" id="inputZip" placeholder="CRM">
+          </div>
+
+          <div class="col-md-4">
+            <label hidden id="ufcrm1" for="ufcrm" class="form-label">UF</label>
+            <input hidden name="ufcrm" type="text" class="form-control" id="ufcrm" placeholder="UF">
+          </div>
+
+          <div class="col-md-4">
+            <label hidden for="nomeprof" id="nomeprof1" class="form-label">NOME DO PROFISSIONAL</label>
+            <input hidden name="nomeprof" readonly type="text" class="form-control" id="nomeprof">
+          </div>
+
+          <div class="col-md-4">
+            <label hidden id="prof1" for="inputZip" class="form-label">ESPECIALIZAÇÃO</label>
+            <input hidden name="prof" readonly type="text" class="form-control" id="prof" placeholder="">
+          </div>
+
+          <div class="col-md-4">
+            <label hidden id="status1" for="inputZip" class="form-label">STATUS</label>
+            <input hidden name="status" readonly type="text" class="form-control" id="status" placeholder="">
+          </div>
+
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck" required>
+              <label class="form-check-label" for="gridCheck">
+                Concordo com os termos -
+                <a style="font-size: 13px;" href="https://www.gov.br/mme/pt-br/servicos/TermodeDeclaraodeConcordnciaeVeracidade.pdf">Termo</a>
+              </label>
+            </div>
+          </div>
+          <div class="d-grid gap-2 col-4 mx-auto">
+            <button type="submit" class="btn btn-primary btn-cadastro"><b>Cadastrar</b></button>
+          </div>
+          <div class="alert alert-danger d-none">
+            Preencha o campo <span id="campo-erro"></span>!
+          </div>
+
+          <div>
+            <a class="btn btn-dark text-white col-2 btn-voltar" href="/"><b style="font-weight:700;">Voltar</b></a>
+          </div>
+        </form>
+        <br>
+      </div>
+    </div>
+</body>
+
+<!-- Modal  seleção Perfil-->
+<div class="modal fade modal1" id="perfil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Escolha um perfil para se Cadastrar</h4>
+      </div>
+      <div class="modal-body">
+        <input class="radio" type="radio" name="user" id="user" onclick="user('paci')">
+        <p class="radio_infor">Paciente</p><br>
+        <input class="radio" onclick="user('psic')" type="radio" name="user" id="psicologo">
+        <p class="radio_infor">Piscólogo</p><br>
+        <input id="radio" class="radio" onclick="user('crm')" type="radio" name="user" i="crm">
+        <p class="radio_infor">Médico</p>
+        <div class="modal-footer">
+          <a type="button" href="/logout" tabindex="-1" class="btnm btn sair">sair</a>
+        </div>
+      </div>
+    </div>
+    <!-- Modal  seleção Perfil-->
+
+    <!-- SCRIPTS  -->
+    <script type="text/javascript" src="/js/scriptcadastro.js"></script>
+    <script type="text/javascript" src="/js/jquery.mask.js"></script>
+    <script>
+
+      function validate(event, form) {
+        event.preventDefault();
+        const nome = document.querySelector('#inputNome');
+        const email = document.querySelector('#inputEmail');
+        const senha = document.querySelector('#inputPassword');
+        const confirmSenha = document.querySelector('#inputPasswordConfirm');
+        const enderco = document.querySelector('#inputAddress');
+        const crm = document.querySelector('#inpuZip');
+        const cidade = document.querySelector('#inputCity');
+        const estado = document.querySelector('#inputState');
+        const checkbox = document.querySelector('#gridCheck');
+        const cpf = document.querySelector('#inputZip1');
+        const erro = document.querySelector('.alert');
+        const campo = document.querySelector('#campo-erro');
+
+
+        erro.classList.add('d-none');
+        nome.classList.remove('is-invalid');
+        email.classList.remove('is-invalid');
+        senha.classList.remove('is-invalid');
+        confirmSenha.classList.remove('is-invalid');
+        enderco.classList.remove('is-invalid');
+        cidade.classList.remove('is-invalid');
+        estado.classList.remove('is-invalid');
+        checkbox.classList.remove('is-invalid');
+        cpf.classList.remove('is-invalid');
+
+        if (nome.value == '') {
+          erro.classList.remove('d-none');
+          campo.innerHTML = 'nome';
+          nome.focus();
+          nome.classList.add('is-invalid')
+          return false;
+        }
+
+        if (email.value == '') {
+          erro.classList.remove('d-none');
+          campo.innerHTML = 'e-mail';
+          email.focus();
+          email.classList.add('is-invalid')
+          return false;
+        }
+
+        if (senha.value == '') {
+          erro.classList.remove('d-none');
+          campo.innerHTML = 'senha';
+          senha.focus();
+          senha.classList.add('is-invalid')
+          return false;
+        }
+
+        if (confirmSenha.value == '' && confirmSenha != senha) {
+          erro.classList.remove('d-none');
+          campo.innerHTML = 'confirmar senha';
+          confirmSenha.focus();
+          confirmSenha.classList.add('is-invalid')
+          return false;
+        }
+
+        if (enderco.value == '') {
+          erro.classList.remove('d-none');
+          campo.innerHTML = 'enderço';
+          enderco.focus();
+          enderco.classList.add('is-invalid')
+          return false;
+        }
+
+        if (cidade.value == '') {
+          erro.classList.remove('d-none');
+          campo.innerHTML = 'cidade';
+          cidade.focus();
+          cidade.classList.add('is-invalid')
+          return false;
+        }
+
+        if (estado.value == '') {
+          erro.classList.remove('d-none');
+          campo.innerHTML = 'estado';
+          estado.focus();
+          estado.classList.add('is-invalid')
+          return false;
+        }
+
+        if (checkbox.value == '') {
+          erro.classList.remove('d-none');
+          campo.innerHTML = 'confirme o cadastro';
+          checkbox.focus();
+          checkbox.classList.add('is-invalid')
+          return false;
+        }
+
+        if (cpf.value == '') {
+          erro.classList.remove('d-none');
+          campo.innerHTML = 'cpf';
+          cpf.focus();
+          cpf.classList.add('is-invalid')
+          return false;
+        }
+
+        let input = document.querySelectorAll('input')
+        input.forEach(inputs => {
+          if (inputs !== '') {
+            form.submit();
+            return true;
+          }
+        })
+      }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      const el = document.getElementById('inputAddress')
+      el.addEventListener("keyup", get);
+      async function get() {
+        let cep = document.getElementById('inputAddress').value
+        if (cep.length == 9) {
+          const getvalues = await axios.get(`https://ws.apicep.com/cep/${cep}.json`).then(res => { return res; })
+          set(getvalues, cep)
+        } else {
+
+        }
+      }
+      function set(res, cep) {
+        document.getElementById('inputCity').value = res.data.city
+        document.getElementById('inputState').value = res.data.state
+        document.getElementById('district').value = res.data.district
+        document.getElementById('address').value = res.data.address
+      }
+
+    </script>
+
+    <script>
+      let crmel = document.getElementById('inputZip')
+      crmel.addEventListener("keyup", getcrm)
+      let ufcrmel = document.getElementById('ufcrm')
+      ufcrmel.addEventListener("keyup", getcrm)
+      async function getcrm() {
+        let CRM = document.getElementById('inputZip').value
+        let UF = document.getElementById('ufcrm').value
+        //alert(`${CRM},${UF}`)
+        if (UF.length == 2) {
+          const profissionais = await axios.get(`https://www.consultacrm.com.br/api/index.php?tipo=crm&uf=${UF}&q=${CRM}&chave=8461988112&destino=json`).then(result => { return result })
+          setcrm(profissionais)
+        } else { }
+      }
+
+      function setcrm(profissionais) {
+        document.getElementsByName('crm').value = profissionais.data.item[0].numero
+        document.getElementsByName('ufcrm').value = profissionais.data.item[0].uf
+        document.getElementById('nomeprof').value = profissionais.data.item[0].nome
+        document.getElementById('prof').value = profissionais.data.item[0].profissao
+        document.getElementById('status').value = profissionais.data.item[0].situacao
+
+      }
+    </script>
+
+</html>

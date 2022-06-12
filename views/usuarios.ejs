@@ -1,0 +1,85 @@
+<%- include('partials/header') %>
+
+    <style>
+        body {
+            background-color: #7B88EE;
+            color: #fff;
+        }
+
+        .usuarius {
+            background-color: #b2e0cb;
+        }
+
+        .voltar {
+            padding: 6px 30px;
+        }
+    </style>
+
+    <body>
+        <hr>
+        <div class="container">
+            <div class="card bg-dark text-white usuarius">
+                <div class="card-header">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h2>Lista de Usuários</h2>
+                    </div>
+                    <div style="width: 100%; border: 1px solid #fff;"></div>
+
+                </div>
+                <div class="card-body">
+
+                    <table class="table table-bordered text-white">
+
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>NOME</th>
+                                <th>E-MAIL</th>
+                                <th>AÇÕES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% users.forEach(user=> { %>
+
+                                <tr>
+                                    <td>
+                                        <%= user.id %>
+                                    </td>
+                                    <td>
+                                        <%= user.nome %>
+                                    </td>
+                                    <td>
+                                        <%= user.email %>
+                                    </td>
+
+                                    <td>
+                                        <a href="/edit/<%= user.id %>" class="btn btn-warning btn-sm ml-2 mb-2">Editar</a>
+                                        <form action="/deleteuserself" method="post" style="display: inline;" onsubmit="confirmDel(event, this)">
+                                            <input type="hidden" name="id" value="<%= user.id %>">
+                                            <button class="btn btn-danger btn-sm ml-2 mb-2">Deletar</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                    </ul>
+                    <div style="float: inline-end;">
+                        <a href="/indexAdmin" class="btn btn-light btn-sm voltar">Voltar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        function confirmDel(event, form) {
+            event.preventDefault()
+            let decision = confirm('Deseja deletar usuário?')
+            if (decision) {
+                form.submit();
+            }
+        }
+    </script>
+
+    </html>

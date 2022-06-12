@@ -1,0 +1,137 @@
+<%- include('partials/header') %>
+  <link rel="stylesheet" href="css/admin.css">
+  <style>
+    #nav {
+      font-size: 25px;
+      color: aliceblue;
+    }
+  </style>
+  <nav style="background-color: #6E6FE5;" class="navbar navbar-expand-lg ">
+    <a href="#">
+      <img src="../../img/logonov.svg" style="width: 155px; height: 120px; margin-left: 5px;" alt="">
+      <label id="nav"><b>Minha mente saudável V 4.3.1</b></label>
+    </a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav bg-d align-items-center" style="padding:0 25px;">
+        <li class="nav-item active">
+          <a class="nav-link btn btn-dark btn-sm" href="/chamada-video" style="font-weight: 600; color: aliceblue; margin-left: 20px; width: 200px;">Video Chamada</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-dark btn-sm" href="/chat" style="font-weight: 600; color: aliceblue; margin-left: 20px">Chat</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-dark btn-sm" href="/marcarConsulta" style="font-weight: 600; color: aliceblue; margin-left: 20px; width: 200px;">Marcar Consulta</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-dark btn-sm" href="/agenda" style="font-weight: 600; color: aliceblue; margin-left: 20px">Agenda</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-dark btn-sm" href="/perfil/<%= id %>" style="font-weight: 600; color: aliceblue; margin-left: 15px">Perfil</a>
+        </li>
+        <li class="nav-item">
+          <!-- link modal -->
+          <a id="sugestaoModal" class="nav-link btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#sugestoes" tabindex="-1" aria-disabled="false" style="font-weight: 600; color: aliceblue; margin-left: 20px">Sugestões</a>
+        </li>
+        <li class="nav-item">
+          <button data-bs-toggle="modal" data-bs-target="#excluir" tabindex="-1" aria-disabled="false" style="font-weight: 600; color: aliceblue; margin-left: 20px" class="nav-link btn btn-dark btn-sm">Excluir_Conta</button>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link btn btn-dark btn-sm" href="/logout" tabindex="-1" aria-disabled="false" style="font-weight: 600; color: aliceblue; margin-left: 20px">Sair</a>
+        </li>
+        <li class="nav-item">
+        </li>
+      </ul>
+      <div class="text-white" style="width: 52%; display: flex; justify-content: flex-end; align-items: center;">
+        <i style="color: #fff;" class="bi bi-person-check fs-4"></i>
+        <label style="border-bottom: 1px solid rgb(120, 224, 231); margin-right: 25px;" for="">Olá,<%= nome %></label>
+      </div>
+    </div>
+  </nav>
+
+  <body style="background-image: url(../img/saudementalback.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-attachment: fixed">
+  
+    <!-- Modal Sugestoes do usuario-->
+    <div>
+      <div class="modal fade" id="sugestoes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel ">Deixe suas sugestões ou elogios</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="/admin" method="post">
+                <div class="row">
+                  <div class="col-md-8">
+                    <label id="info" for=" descricao"> <b>Descrição da Sugestão: </label><br>
+                    <input id="iputdescricao" name="descricao" type="text" maxlength="40"><br><br>
+                    <label for="mensagem" id="info">Digite sua sugestão Aqui:</label>
+                    <textarea onkeyup="contador_caracteres(this.value)" style="resize: none" maxlength="250" class="textarea" name="Sugestao" id="mensagem" style="height: 100px;" class="modal-input form-control" type="text"></textarea>
+                    <div id="info" style="margin-left: 410px;">
+                      <span id="contador">250</span> Caracteres restantes
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" type="button" class="btn btn-modal enviar neg" data-bs-dismiss="modal"><b>Enviar</b></button>
+                    <a href="/admin">
+                      <button type="button" class="btn btn-modal voltar neg"><b>Voltar</b></button></a>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal EXCLUIR CONTA-->
+    <div>
+      <div class="modal fade" id="excluir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel ">VOCE DESEJA EXCLUIR SUA CONTA?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-8">
+                </div>
+                <div class="modal-footer">
+                  <form action="/deleteuserself" method="post" onsubmit="confirmDel(event, this)">
+                    <input type="hidden" name="id" value="<%= id %>">
+                    <button class="btn btn-modal enviar neg" data-bs-dismiss="modal"><b>Excluir</b></button>
+                  </form>
+                  <a href="/admin">
+                    <button type="button" class="btn btn-dark btn-modal neg"><b>VOLTAR</b></button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script type="text/javascript">
+
+        function contador_caracteres(valor) {
+          const caracter = 250
+          const total = valor.length
+          if (total <= caracter) {
+            const restante = caracter - total;
+            document.getElementById('contador').innerHTML = restante;
+          } else {
+            document.getElementById('mensagem').value = valor.substr(0, caracter);
+          }
+
+        };
+      </script>
+  </body>
+
+  </html>
+
+
+
+  <!-- 
+<i class="bi bi-x-circle-fill"></i>
+-->

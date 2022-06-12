@@ -1,0 +1,59 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div class="col-md-4">
+            <label for="inputZip" class="form-label">CRM/NOME/ESPECIALIDADE</label>
+            <input name="crm" type="text" class="form-control" id="inputZip" placeholder="CRM">
+          </div>
+
+          <div class="col-md-4">
+            <label for="ufcrm" class="form-label">UF</label>
+            <input name="ufcrm" type="text" class="form-control" id="ufcrm" placeholder="UF">
+          </div>
+
+          <div class="col-md-4">
+            <label for="nomeprof" class="form-label">NOME DO PROFISSIONAL</label>
+            <input name="nomeprof" readonly type="text" class="form-control" id="nomeprof">
+          </div>
+
+          <div class="col-md-4">
+            <label for="inputZip" class="form-label">ESPECIALIZAÇÃO</label>
+            <input name="prof" readonly type="text" class="form-control" id="prof" placeholder="">
+          </div>
+
+          <div class="col-md-4">
+            <label for="inputZip" class="form-label">STATUS</label>
+            <input name="status" readonly type="text" class="form-control" id="status" placeholder="">
+          </div>
+    </body>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        let crmel = document.getElementById('inputZip')
+        crmel.addEventListener("keyup", getcrm)
+        let ufcrmel = document.getElementById('ufcrm')
+        ufcrmel.addEventListener("keyup", getcrm)
+        async function getcrm(){
+            let CRM = document.getElementById('inputZip').value
+            let UF = document.getElementById('ufcrm').value
+            //alert(`${CRM},${UF}`)
+            if(UF.length == 2){
+                const profissionais = await axios.get(`https://www.consultacrm.com.br/api/index.php?tipo=crm&uf=${UF}&q=${CRM}&chave=8461988112&destino=json`).then(result=>{return result})
+                setcrm(profissionais)
+            }else{}
+        }
+
+    function setcrm(profissionais){
+        document.getElementsByName('crm').value = profissionais.data.item[0].numero
+        document.getElementsByName('ufcrm').value = profissionais.data.item[0].uf
+        document.getElementById('nomeprof').value = profissionais.data.item[0].nome
+        document.getElementById('prof').value = profissionais.data.item[0].profissao
+        document.getElementById('status').value = profissionais.data.item[0].situacao
+        
+      }
+    </script>
+</html>

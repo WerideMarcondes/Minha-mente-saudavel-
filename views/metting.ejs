@@ -1,0 +1,84 @@
+<html>
+
+<head>
+    <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha256-L/W5Wfqfa0sdBNIKN9cG6QA5F2qx4qICmU2VgLruv9Y=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha256-WqU1JavFxSAMcLP2WIOI+GB2zWmShMI82mTpLDcqFUg=" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background: rgb(0, 0, 0);
+            background-position: center;
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            align-items: center;
+            justify-content: center;
+            padding: 0 50px;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            color: white;
+        }
+
+        .movie-area {
+            min-height: 60vh;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #localVideo {
+            /* background: #d21d86; */
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            max-width: calc(50% - 5%);
+            margin: 0 5%;
+            box-sizing: border-box;
+            border-radius: 14px;
+            padding: 0;
+            border: 4px solid #6E6FE5;
+        }
+
+        #remoteVideo {
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            max-width: calc(50% - 5%);
+            margin: 0 5%;
+            box-sizing: border-box;
+            border-radius: 14px;
+            padding: 0;
+            border: 4px solid #6E6FE5;
+        }
+
+        .btnv {
+            background-color: #7B88EE;
+            color: #eeeeee;
+            font-weight: 700;
+        }
+
+        .btnv:hover {
+            background-color: #6E6FE5;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <script src="/js/metting.js"></script>
+        <h1 class="text-center">Sua mente saudável</h1>
+        <h4 class="text-center">Consulta Online</h3>
+            <section class="movie-area">
+                <video id="localVideo" autoplay muted></video>
+                <video id="remoteVideo" autoplay></video>
+            </section>
+            <p style="text-align: center;">Aguarde o outro participante abrir o vídeo, e dar inicio a chamada.</p>
+            <br>
+            <div class="btn" style="display: flex; justify-content: center;">
+                <a href="/admin" class="btn  btnv">Voltar para o menu</a>
+            </div>
+    </section>
+</body>
+
+</html>
