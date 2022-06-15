@@ -64,11 +64,11 @@
         }
 
         .voltar {
-            width: 108px;
+            width: 160px;
             height: 40px;
             border: 2px;
             background-color: #202020;
-            margin: 10px;
+            margin-right: 100px;
 
         }
 
@@ -80,6 +80,44 @@
             font-size: 25px;
             color: aliceblue;
         }
+
+        .inputhora {
+            width: 200px;
+        }
+
+        .input {
+            font-size: 30px;
+            border-radius: 10px;
+            width: 228px;
+        }
+
+        .info {
+            color: black;
+            font-size: 30px;
+            margin: 0 auto;
+
+        }
+
+        .Btn {
+            padding: 8px 16px;
+            background-color: #6E6FE5;
+            margin-right: 300px;
+        }
+        .agendar{
+            width: 160px;
+        }
+        .neg {
+            font-weight: 700;
+        }
+
+        .Voltar {
+            padding: 8px 30px;
+            width: 160px;
+            border-radius: 8px;
+            background-color: #212529;
+            color: #fff;
+            margin-top: -90px;
+        }
     </style>
 
 
@@ -89,7 +127,8 @@
             <label id="nav"><b>Minha mente saudável V 4.3.1</b></label>
         </a>
         <div class="logout">
-            <a style="margin-left: 900px;" class="nav-link btn btn-dark btn-sm text-white" href="/logout" tabindex="-1" aria-disabled="false">Sair</a>
+            <a style="margin-left: 900px;" class="nav-link btn btn-dark btn-sm text-white" href="/logout" tabindex="-1"
+                aria-disabled="false">Sair</a>
         </div>
 
     </nav>
@@ -114,22 +153,31 @@
                 </form>
             </div>
 
+            <div hidden class="card">
+                <a href="/horarios">
+                    <h4>Criar horarios</h4>
+                </a>
+            </div>
+
         </div>
 
         <div class="flex-sugestao">
-            <button id="sugestoes" data-bs-toggle="modal" data-bs-target="#listSugestoes" tabindex="-1" aria-disabled="false">
+            <button id="sugestoes" data-bs-toggle="modal" data-bs-target="#listSugestoes" tabindex="-1"
+                aria-disabled="false">
                 <h4>Listar Sugestões dos Usuários<h4>
-        </div>
+        </div><br><br>
         <!-- Modal listSugestoes-->
         <div>
             <div>
-                <div class="modal fade" id="listSugestoes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                <div class="modal fade" id="listSugestoes" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true" data-backdrop="static" data-keyboard="false">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <link rel="stylesheet" href="/css/1admin.css">
                                 <h5 class="modal-title" id="exampleModalLabel ">Sugestões dos Usuarios</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="row">
                                 <div class="modal-body">
@@ -147,9 +195,13 @@
                                                         <th style="font-size: 30px;" class="col-md-3">
                                                             Sugestão
                                                         <th>
-                                                            <form action="/deleteSugestoes" method="post" style="display: inline;" onsubmit="confirmDel(event, this)">
-                                                                <input type="hidden" name="id" value="<%= sugestao.id %>">
-                                                                <button class="btn btn-sm ml-2 mb-2 deletar"><b>Deletar</b></button>
+                                                            <form action="/deleteSugestoes" method="post"
+                                                                style="display: inline;"
+                                                                onsubmit="confirmDel(event, this)">
+                                                                <input type="hidden" name="id"
+                                                                    value="<%= sugestao.id %>">
+                                                                <button
+                                                                    class="btn btn-sm ml-2 mb-2 deletar"><b>Deletar</b></button>
                                                             </form>
                                                     </tr>
                                                 </thead>
@@ -173,7 +225,8 @@
                                 </div>
 
                                 <div>
-                                    <button n type="button" data-bs-dismiss="modal" aria-label="Close" type="button" class="btn btn-primary btn-modal voltar"><b>Voltar</b></button>
+                                    <button n type="button" data-bs-dismiss="modal" aria-label="Close" type="button"
+                                        class="btn btn-primary btn-modal voltar"><b>Voltar</b></button>
                                 </div>
                             </div>
                         </div>
@@ -182,6 +235,54 @@
             </div>
             <!-- Modal listSugestoes-->
 
+
+            <div class="flex-sugestao">
+                <button id="sugestoes" data-bs-toggle="modal" data-bs-target="#horario" tabindex="-1"
+                    aria-disabled="false">
+                    <h4>Gerenciar horários dos profissionais<h4>
+            </div>
+            <!-- Modal Horários-->
+            <div>
+                <div>
+                    <div class="modal fade" id="horario" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <link rel="stylesheet" href="/css/1admin.css">
+                                    <h5 class="info modal-title" id="exampleModalLabel ">Definir horarios para
+                                        atendimento</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="row">
+                                    <div class="modal-body d-flex justify-content-center">
+
+                                        <form method="post" action="/sethorarios">
+                                            <div class="col-md-0">
+                                                <h1 class="info">Hora inicial</h1>
+                                                <input class="input form-control inputhora" required type="time"
+                                                    class="" id="horaini" name="horaini"><br>
+
+                                                <h1 class="info">Hora final</h1>
+                                                <input class="input form-control inputhora" required type="time"
+                                                    class="" id="horafim" name="horafim"><br><br>
+                                            </div>
+                                            <button type="submit" class="btn Btn btn-success agendar">Cadastrar</button>
+                                            <button n type="button" data-bs-dismiss="modal" aria-label="Close" type="button"
+                                            class="btn btn-primary btn-modal voltar"><b>Voltar</b></button>
+                                        </form>
+                                    </div>
+                                    
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal horários-->
     </body>
     <script>
         function confirmDel(event, form) {

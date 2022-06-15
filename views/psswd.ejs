@@ -51,7 +51,7 @@
           </div>
           <div class="col-md-4">
             <label for="inputPassword4" class="form-label">Confirmar senha</label>
-            <input type="text" value="" name="id" class="form-control" id="id" name="confirmSenha">
+            <input type="password" class="form-control" id="inputPassword2" name="confirmSenha">
           </div>
 
           <div class="d-grid gap-2 col-4 mx-auto">
@@ -68,10 +68,12 @@
 <script>
   $("#olho").mousedown(function () {
     $("#inputPassword1").attr("type", "text");
+    $("#inputPassword2").attr("type", "text");
   });
 
   $("#olho").mouseup(function () {
     $("#inputPassword1").attr("type", "password");
+    $("#inputPassword2").attr("type", "password");
   });
 </script>
 <!-- SCRIPTS  -->

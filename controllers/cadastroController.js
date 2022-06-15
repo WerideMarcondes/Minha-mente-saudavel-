@@ -25,32 +25,45 @@ router.post('/cadastro/save', (req, res) => {
     let crm = req.body.crm;
     let admin = req.body.admin;
 
-    if (senha !== undefined && senha !== null && senha !== '' &&  senha === confirmSenha && confirmSenha !== undefined && confirmSenha !== null && confirmSenha !== '') {
-    console.log(senha)
-    console.log(confirmSenha)
-    Paciente.create({
-        nome: nome,
-        email: email,
-        nascimento: Nascimento,
-        senha: hash,
-        cnpj: cnpj,
-        matricula: matricula,
-        endereco: endereco,
-        cidade: cidade,
-        estado: estado,
-        cpf: cpf,
-        cfp: cfp,
-        crm: crm,
-        admin: admin
-    
-    }).then(() => {
-        res.send("<script>alert('Usuário cadastrado'); window.location.href = '/'; </script>"); 
-    }).catch(() => {
-        res.redirect('/cadastro');
+    Paciente.findOne({ where: { email: email }}).then(user => {
+
+        if (user) {
+            res.send("<script>alert('Não e possivel realizar esse cadastro, pois esse email pois ja existe na base de dados '); window.location.href = '/'; </script>")
+
+        } else Paciente.findOne({ where: { cpf: cpf } }).then(user => {
+
+            if (user) {
+
+                res.send("<script>alert('Não e possivel realizar esse cadastro, pois já exite um usuario com esses dados'); window.location.href = '/'; </script>")
+
+            }
+            else if (senha !== undefined && senha !== null && senha !== '' && senha === confirmSenha && confirmSenha !== undefined && confirmSenha !== null && confirmSenha !== '') {
+              
+                Paciente.create({
+                    nome: nome,
+                    email: email,
+                    nascimento: Nascimento,
+                    senha: hash,
+                    cnpj: cnpj,
+                    matricula: matricula,
+                    endereco: endereco,
+                    cidade: cidade,
+                    estado: estado,
+                    cpf: cpf,
+                    cfp: cfp,
+                    crm: crm,
+                    admin: admin
+
+                }).then(() => {
+                    res.send("<script>alert('Usuário cadastrado'); window.location.href = '/'; </script>");
+                }).catch(() => {
+                    res.redirect('/cadastro');
+                })
+            } else {
+                res.send('<script> alert("As senhas precisam ser preechida e não podem ser diferentes !"); window.location.href = "/cadastro"</script>');
+            }
+        })
     })
-}else {
-    res.send('<script> alert("As senhas precisam ser preechida e não podem ser diferentes !"); window.location.href = "/cadastro"</script>');
-}
 })
 
 module.exports = router;

@@ -49,9 +49,12 @@ const Paciente = connection.define('users', {
     },
     crm: { 
         type: Sequelize.TEXT,
-              allowNull: false
-    },
+              allowNull: false    },
     superuser: { 
+        type: Sequelize.TEXT,
+              allowNull: true
+    },
+    medicos: { 
         type: Sequelize.TEXT,
               allowNull: true
     },
@@ -59,7 +62,7 @@ const Paciente = connection.define('users', {
         type: Sequelize.TEXT,
               allowNull: true
     }
-    
+   
 })
 
 Paciente.sync({ alter: true });

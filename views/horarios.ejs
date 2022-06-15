@@ -1,0 +1,56 @@
+<%- include('partials/header')%>
+    <%- include('partials/navbar')%>
+        <title>horarios</title>
+        </head>
+        <style>
+            body {
+                background-color: #7B88EE;
+            }
+
+            .btn {
+                padding: 8px 16px;
+                width: 128px;
+                border-radius: 8px;
+                font-weight: 700;
+                margin-right: 30px;
+
+            }
+
+
+            .agendar {
+                height: 46px;
+                border-radius: 8px;
+                background-color: #7B88EE;
+                border-color: #6E6FE5;
+                font-weight: 700;
+
+            }
+
+            .agendar:hover {
+                background-color: #6E6FE5;
+            }
+
+            .card {
+                background-color: #f1f1f1;
+            }
+
+            .body {
+                background-color: #f1f1f1;
+                font-size: 30px;
+                width: 2100px;
+                margin-left: 30px;
+            }
+        </style>
+
+        <body>
+            <form method="post" action="/sethorarios">
+                   Hora inicial
+                    <input type="time" id="horaini" name="horaini">
+                    Hora final
+                    <input type="time" id="horafim" name="horafim">
+                    <button type="submit" class="btn btn-success agendar">Cadastrar</button>
+            </form>
+
+        </body>
+
+        </html>

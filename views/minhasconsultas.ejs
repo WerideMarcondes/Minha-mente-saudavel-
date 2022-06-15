@@ -15,7 +15,6 @@
         margin-right: 30px;
 
       }
-    
 
       .agendar {
         height: 46px;
@@ -30,9 +29,6 @@
         background-color: #6E6FE5;
       }
 
-      .card {
-        background-color: #f1f1f1;
-      }
       .body{
         background-color: #f1f1f1;
         font-size: 30px;
@@ -45,15 +41,21 @@
       }.info{
         font-size: 50px;
         margin:0 auto;
+      }.Btn{
+        width: 250px;
+        font-size: 20px;
+        height: 100;
       }
     </style>
 
-    <body>
+    
+      <body><br><br>
+
         <div class="container">
             <div class="card bg-white text-black usuarius">
                 <div class="card-header">
                     <div style="display: flex; justify-content: space-between;">
-                        <h1 class="info">Agenda de consultas</h1>
+                        <h1 class="info">Minhas Consultas</h1>
                     </div>
                     
       <div class="card-body">
@@ -68,7 +70,7 @@
               <% consultas.forEach(consulta=>{ %>
                 <tr>
                   <th>
-                    <%= profissionais.nome+''+''+profissionais.crm%>
+                   <%= profissionais.nome+''+''+profissionais.crm%>
                   </th>
                   <th>
                     <%=consulta.datamarc%>
@@ -80,27 +82,31 @@
                     <%=consulta.horafim%>
                   </th>
                   <th>
-                    <form method="POST" action="/agendaconsulta" style="display: inline;">
+                    <form method="POST" action="/desmarcarconsulta" style="display: inline;">
                       <input type="hidden" id="idmedic" name="idmedic" value="<%=profissionais.id%>">
                       <input type="hidden" id="idpaciente" name="idpaciente" value="<%=id%>">
                       <input type="hidden" id="data" name="data" value="<%=consulta.datamarc%>">
+                      <input type="hidden" id="idconsulta" name="idconsulta" value="<%=consulta.id%>">
                       <input type="hidden" id="hrini" name="hrini" value="<%=consulta.horaini%>">
                       <input type="hidden" id="hrfim" name="hrfim" value="<%=consulta.horafim%>">
-                      <button type="submit" class="btn btn-success agendar">Agendar</button>
+                      <button type="submit" class="btn Btn btn-success agendar">Desmarcar Consulta</button>
                     </form>
                 </tr>            
             <%})%>
-              </table>
-      </div>
-      <div class="modal-footer">
-        <a href="/marcarConsulta">
-          <button type="button" class="btn btn-dark btn-modal neg"><b>VOLTAR</b></button></a>
+        </table>
+          
+        
+        <div class="row">
+          <div class="col-md-8">
+          </div>
+          <div class="modal-footer">
+            <a href="/marcarConsulta">
+              <button type="button" class="btn btn-dark btn-modal neg"><b>VOLTAR</b></button></a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-  
-
     </body>
+
 
     </html>

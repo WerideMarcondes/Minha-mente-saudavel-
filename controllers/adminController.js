@@ -13,7 +13,6 @@ router.get('/marcarConsulta',(req, res) =>{
         [Op.ne]: null,  [Op.ne]: ''}}}).then((medicos) => {
             Paciente.findAll({ raw: true, where: {cfp: {
                 [Op.ne]: null,  [Op.ne]: '' }}}).then((psicologos) => {
-                    console.log(psicologos)
                     res.render('agendamento', {medicos: medicos, psicologos: psicologos}); 
             }) 
     });  
@@ -215,19 +214,28 @@ router.get('/pinuser', (req, res) => {
 router.post('/setsenha', (req, res) => {
     let email = req.session.email;
     let senha = req.body.senha;
+    let confirmSenha = req.body.confirmSenha;
     let salt = bcrypt.genSaltSync(10);
     let hash = bcrypt.hashSync(senha, salt);
-    Paciente.update({
-        senha: hash
-    }, {
-        where: {
-            email: email
-        }
-    }).then(() => {
-        res.send('<script> alert("Senha alterada com sucesso!"); window.location.href = "/"</script>');
-    }).catch(() => {
-        res.send('<script> alert("Seus Dados estão incorretos !"); window.location.href = "/novasenha"</script>');
-    })
+    console.log(senha)
+    console.log(confirmSenha)
+    if(senha === confirmSenha){
+        Paciente.update({
+            senha: hash
+        }, {
+            where: {
+                email: email
+            }
+        }).then(() => {
+            res.send('<script> alert("Senha alterada com sucesso!"); window.location.href = "/"</script>');
+        }).catch(() => {
+            res.send('<script> alert("Seus Dados estão incorretos !"); window.location.href = "/novasenha"</script>');
+        })
+    }
+    else{
+        res.send('<script> alert("Digite senhas iguais"); window.location.href = "/novasenha"</script>');
+    }
+    
 
   
 });
