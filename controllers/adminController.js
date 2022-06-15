@@ -217,8 +217,7 @@ router.post('/setsenha', (req, res) => {
     let confirmSenha = req.body.confirmSenha;
     let salt = bcrypt.genSaltSync(10);
     let hash = bcrypt.hashSync(senha, salt);
-    console.log(senha)
-    console.log(confirmSenha)
+
     if(senha === confirmSenha){
         Paciente.update({
             senha: hash
